@@ -1,0 +1,96 @@
+F:\Downloads\Store\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.fsproj.AssemblyReference.cache
+F:\Downloads\Store\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.AssemblyInfoInputs.cache
+F:\Downloads\Store\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.AssemblyInfo.fs
+F:\Downloads\Store\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.fsproj.CoreCompileInputs.cache
+F:\Downloads\Store\StoreManagement\bin\Debug\net8.0-windows\StoreManagement.exe
+F:\Downloads\Store\StoreManagement\bin\Debug\net8.0-windows\StoreManagement.deps.json
+F:\Downloads\Store\StoreManagement\bin\Debug\net8.0-windows\StoreManagement.runtimeconfig.json
+F:\Downloads\Store\StoreManagement\bin\Debug\net8.0-windows\StoreManagement.dll
+F:\Downloads\Store\StoreManagement\bin\Debug\net8.0-windows\StoreManagement.pdb
+F:\Downloads\Store\StoreManagement\bin\Debug\net8.0-windows\FSharp.Core.dll
+F:\Downloads\Store\StoreManagement\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+F:\Downloads\Store\StoreManagement\bin\Debug\net8.0-windows\System.Reactive.dll
+F:\Downloads\Store\StoreManagement\bin\Debug\net8.0-windows\System.Reactive.Windows.Forms.dll
+F:\Downloads\Store\StoreManagement\bin\Debug\net8.0-windows\cs\FSharp.Core.resources.dll
+F:\Downloads\Store\StoreManagement\bin\Debug\net8.0-windows\de\FSharp.Core.resources.dll
+F:\Downloads\Store\StoreManagement\bin\Debug\net8.0-windows\es\FSharp.Core.resources.dll
+F:\Downloads\Store\StoreManagement\bin\Debug\net8.0-windows\fr\FSharp.Core.resources.dll
+F:\Downloads\Store\StoreManagement\bin\Debug\net8.0-windows\it\FSharp.Core.resources.dll
+F:\Downloads\Store\StoreManagement\bin\Debug\net8.0-windows\ja\FSharp.Core.resources.dll
+F:\Downloads\Store\StoreManagement\bin\Debug\net8.0-windows\ko\FSharp.Core.resources.dll
+F:\Downloads\Store\StoreManagement\bin\Debug\net8.0-windows\pl\FSharp.Core.resources.dll
+F:\Downloads\Store\StoreManagement\bin\Debug\net8.0-windows\pt-BR\FSharp.Core.resources.dll
+F:\Downloads\Store\StoreManagement\bin\Debug\net8.0-windows\ru\FSharp.Core.resources.dll
+F:\Downloads\Store\StoreManagement\bin\Debug\net8.0-windows\tr\FSharp.Core.resources.dll
+F:\Downloads\Store\StoreManagement\bin\Debug\net8.0-windows\zh-Hans\FSharp.Core.resources.dll
+F:\Downloads\Store\StoreManagement\bin\Debug\net8.0-windows\zh-Hant\FSharp.Core.resources.dll
+F:\Downloads\Store\StoreManagement\obj\Debug\net8.0-windows\StoreMan.B2A759F0.Up2Date
+F:\Downloads\Store\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.dll
+F:\Downloads\Store\StoreManagement\obj\Debug\net8.0-windows\refint\StoreManagement.dll
+F:\Downloads\Store\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.pdb
+F:\Downloads\Store\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.genruntimeconfig.cache
+F:\Downloads\Store\StoreManagement\obj\Debug\net8.0-windows\ref\StoreManagement.dll
+F:\Downloads\StoreManagement\bin\Debug\net8.0-windows\StoreManagement.exe
+F:\Downloads\StoreManagement\bin\Debug\net8.0-windows\StoreManagement.deps.json
+F:\Downloads\StoreManagement\bin\Debug\net8.0-windows\StoreManagement.runtimeconfig.json
+F:\Downloads\StoreManagement\bin\Debug\net8.0-windows\StoreManagement.dll
+F:\Downloads\StoreManagement\bin\Debug\net8.0-windows\StoreManagement.pdb
+F:\Downloads\StoreManagement\bin\Debug\net8.0-windows\FSharp.Core.dll
+F:\Downloads\StoreManagement\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+F:\Downloads\StoreManagement\bin\Debug\net8.0-windows\System.Reactive.dll
+F:\Downloads\StoreManagement\bin\Debug\net8.0-windows\System.Reactive.Windows.Forms.dll
+F:\Downloads\StoreManagement\bin\Debug\net8.0-windows\cs\FSharp.Core.resources.dll
+F:\Downloads\StoreManagement\bin\Debug\net8.0-windows\de\FSharp.Core.resources.dll
+F:\Downloads\StoreManagement\bin\Debug\net8.0-windows\es\FSharp.Core.resources.dll
+F:\Downloads\StoreManagement\bin\Debug\net8.0-windows\fr\FSharp.Core.resources.dll
+F:\Downloads\StoreManagement\bin\Debug\net8.0-windows\it\FSharp.Core.resources.dll
+F:\Downloads\StoreManagement\bin\Debug\net8.0-windows\ja\FSharp.Core.resources.dll
+F:\Downloads\StoreManagement\bin\Debug\net8.0-windows\ko\FSharp.Core.resources.dll
+F:\Downloads\StoreManagement\bin\Debug\net8.0-windows\pl\FSharp.Core.resources.dll
+F:\Downloads\StoreManagement\bin\Debug\net8.0-windows\pt-BR\FSharp.Core.resources.dll
+F:\Downloads\StoreManagement\bin\Debug\net8.0-windows\ru\FSharp.Core.resources.dll
+F:\Downloads\StoreManagement\bin\Debug\net8.0-windows\tr\FSharp.Core.resources.dll
+F:\Downloads\StoreManagement\bin\Debug\net8.0-windows\zh-Hans\FSharp.Core.resources.dll
+F:\Downloads\StoreManagement\bin\Debug\net8.0-windows\zh-Hant\FSharp.Core.resources.dll
+F:\Downloads\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.fsproj.AssemblyReference.cache
+F:\Downloads\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.AssemblyInfoInputs.cache
+F:\Downloads\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.AssemblyInfo.fs
+F:\Downloads\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.fsproj.CoreCompileInputs.cache
+F:\Downloads\StoreManagement\obj\Debug\net8.0-windows\StoreMan.B2A759F0.Up2Date
+F:\Downloads\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.dll
+F:\Downloads\StoreManagement\obj\Debug\net8.0-windows\refint\StoreManagement.dll
+F:\Downloads\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.pdb
+F:\Downloads\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.genruntimeconfig.cache
+F:\Downloads\StoreManagement\obj\Debug\net8.0-windows\ref\StoreManagement.dll
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\bin\Debug\net8.0-windows\StoreManagement.exe
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\bin\Debug\net8.0-windows\StoreManagement.deps.json
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\bin\Debug\net8.0-windows\StoreManagement.runtimeconfig.json
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\bin\Debug\net8.0-windows\StoreManagement.dll
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\bin\Debug\net8.0-windows\StoreManagement.pdb
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\bin\Debug\net8.0-windows\FSharp.Core.dll
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\bin\Debug\net8.0-windows\System.Reactive.dll
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\bin\Debug\net8.0-windows\System.Reactive.Windows.Forms.dll
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\bin\Debug\net8.0-windows\cs\FSharp.Core.resources.dll
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\bin\Debug\net8.0-windows\de\FSharp.Core.resources.dll
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\bin\Debug\net8.0-windows\es\FSharp.Core.resources.dll
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\bin\Debug\net8.0-windows\fr\FSharp.Core.resources.dll
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\bin\Debug\net8.0-windows\it\FSharp.Core.resources.dll
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\bin\Debug\net8.0-windows\ja\FSharp.Core.resources.dll
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\bin\Debug\net8.0-windows\ko\FSharp.Core.resources.dll
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\bin\Debug\net8.0-windows\pl\FSharp.Core.resources.dll
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\bin\Debug\net8.0-windows\pt-BR\FSharp.Core.resources.dll
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\bin\Debug\net8.0-windows\ru\FSharp.Core.resources.dll
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\bin\Debug\net8.0-windows\tr\FSharp.Core.resources.dll
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\bin\Debug\net8.0-windows\zh-Hans\FSharp.Core.resources.dll
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\bin\Debug\net8.0-windows\zh-Hant\FSharp.Core.resources.dll
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.fsproj.AssemblyReference.cache
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.AssemblyInfoInputs.cache
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.AssemblyInfo.fs
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.fsproj.CoreCompileInputs.cache
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\obj\Debug\net8.0-windows\StoreMan.B2A759F0.Up2Date
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.dll
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\obj\Debug\net8.0-windows\refint\StoreManagement.dll
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.pdb
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.genruntimeconfig.cache
+D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\obj\Debug\net8.0-windows\ref\StoreManagement.dll
