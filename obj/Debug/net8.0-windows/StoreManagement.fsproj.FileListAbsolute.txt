@@ -94,3 +94,36 @@ D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\obj\Debug\net8.0
 D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.pdb
 D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.genruntimeconfig.cache
 D:\Gamal\level Four\pl3\project\StoreManagement\StoreManagement\obj\Debug\net8.0-windows\ref\StoreManagement.dll
+F:\Helwan_university\StoreManagement\bin\Debug\net8.0-windows\StoreManagement.exe
+F:\Helwan_university\StoreManagement\bin\Debug\net8.0-windows\StoreManagement.deps.json
+F:\Helwan_university\StoreManagement\bin\Debug\net8.0-windows\StoreManagement.runtimeconfig.json
+F:\Helwan_university\StoreManagement\bin\Debug\net8.0-windows\StoreManagement.dll
+F:\Helwan_university\StoreManagement\bin\Debug\net8.0-windows\StoreManagement.pdb
+F:\Helwan_university\StoreManagement\bin\Debug\net8.0-windows\FSharp.Core.dll
+F:\Helwan_university\StoreManagement\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+F:\Helwan_university\StoreManagement\bin\Debug\net8.0-windows\System.Reactive.dll
+F:\Helwan_university\StoreManagement\bin\Debug\net8.0-windows\System.Reactive.Windows.Forms.dll
+F:\Helwan_university\StoreManagement\bin\Debug\net8.0-windows\cs\FSharp.Core.resources.dll
+F:\Helwan_university\StoreManagement\bin\Debug\net8.0-windows\de\FSharp.Core.resources.dll
+F:\Helwan_university\StoreManagement\bin\Debug\net8.0-windows\es\FSharp.Core.resources.dll
+F:\Helwan_university\StoreManagement\bin\Debug\net8.0-windows\fr\FSharp.Core.resources.dll
+F:\Helwan_university\StoreManagement\bin\Debug\net8.0-windows\it\FSharp.Core.resources.dll
+F:\Helwan_university\StoreManagement\bin\Debug\net8.0-windows\ja\FSharp.Core.resources.dll
+F:\Helwan_university\StoreManagement\bin\Debug\net8.0-windows\ko\FSharp.Core.resources.dll
+F:\Helwan_university\StoreManagement\bin\Debug\net8.0-windows\pl\FSharp.Core.resources.dll
+F:\Helwan_university\StoreManagement\bin\Debug\net8.0-windows\pt-BR\FSharp.Core.resources.dll
+F:\Helwan_university\StoreManagement\bin\Debug\net8.0-windows\ru\FSharp.Core.resources.dll
+F:\Helwan_university\StoreManagement\bin\Debug\net8.0-windows\tr\FSharp.Core.resources.dll
+F:\Helwan_university\StoreManagement\bin\Debug\net8.0-windows\zh-Hans\FSharp.Core.resources.dll
+F:\Helwan_university\StoreManagement\bin\Debug\net8.0-windows\zh-Hant\FSharp.Core.resources.dll
+F:\Helwan_university\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.fsproj.AssemblyReference.cache
+F:\Helwan_university\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.AssemblyInfoInputs.cache
+F:\Helwan_university\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.AssemblyInfo.fs
+F:\Helwan_university\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.fsproj.CoreCompileInputs.cache
+F:\Helwan_university\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.sourcelink.json
+F:\Helwan_university\StoreManagement\obj\Debug\net8.0-windows\StoreMan.B2A759F0.Up2Date
+F:\Helwan_university\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.dll
+F:\Helwan_university\StoreManagement\obj\Debug\net8.0-windows\refint\StoreManagement.dll
+F:\Helwan_university\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.pdb
+F:\Helwan_university\StoreManagement\obj\Debug\net8.0-windows\StoreManagement.genruntimeconfig.cache
+F:\Helwan_university\StoreManagement\obj\Debug\net8.0-windows\ref\StoreManagement.dll

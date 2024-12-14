@@ -10,7 +10,7 @@ open System.Reflection
 [<assembly: System.Reflection.AssemblyCompanyAttribute("StoreManagement")>]
 [<assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")>]
 [<assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")>]
-[<assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")>]
+[<assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0a2c3571707780c50cee901546287f2174324ab0")>]
 [<assembly: System.Reflection.AssemblyProductAttribute("StoreManagement")>]
 [<assembly: System.Reflection.AssemblyTitleAttribute("StoreManagement")>]
 [<assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")>]

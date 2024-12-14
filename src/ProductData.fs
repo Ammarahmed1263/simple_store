@@ -5,25 +5,14 @@ open Newtonsoft.Json
 open Store.Domain
 
 module ProductData =
-    let productFilePath = "storeCatalog.json"
-
-    let saveProducts (products: Product list) =
-        try
-            let json = JsonConvert.SerializeObject(products, Formatting.Indented)
-            File.WriteAllText(productFilePath, json)
-        with ex ->
-            failwithf "Error saving products: %s" ex.Message
+    let productFilePath: string = "storeCatalog.json"
 
     let loadProducts () =
         try
             if File.Exists(productFilePath) then
-                let json = File.ReadAllText(productFilePath)
+                let json: string = File.ReadAllText(productFilePath)
                 JsonConvert.DeserializeObject<Product list>(json)
             else
                 []
-        with ex ->
+        with (ex: exn) ->
             failwithf "Error loading products: %s" ex.Message
-
-
-
-    let onCompleted () = 6

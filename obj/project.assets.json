@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net8.0-windows7.0": {
-      "FSharp.Core/9.0.100": {
+      "FSharp.Core/8.0.200": {
         "type": "package",
         "compile": {
           "lib/netstandard2.1/FSharp.Core.dll": {
@@ -114,15 +114,15 @@
     }
   },
   "libraries": {
-    "FSharp.Core/9.0.100": {
-      "sha512": "ye8yagHGsH08H2Twno5GRWkSbrMtxK/SWiHuPcF+3nODpW65/VJ8RO0aWxp8n9+KQbmahg90wAEL3TEXjF0r6A==",
+    "FSharp.Core/8.0.200": {
+      "sha512": "U016Y0NhtIEQvbmxf6Sff9lx7PTSGEFctA/kLrJr9MvNfKwjrzlK/4C2V1StgsapegWeGYW6K8Zd/D6vc9C4Yw==",
       "type": "package",
-      "path": "fsharp.core/9.0.100",
+      "path": "fsharp.core/8.0.200",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
-        "fsharp.core.9.0.100.nupkg.sha512",
+        "fsharp.core.8.0.200.nupkg.sha512",
         "fsharp.core.nuspec",
         "lib/netstandard2.0/FSharp.Core.dll",
         "lib/netstandard2.0/FSharp.Core.xml",
@@ -269,38 +269,31 @@
   },
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
-      "FSharp.Core >= 9.0.100",
+      "FSharp.Core >= 8.0.200",
       "Newtonsoft.Json >= 13.0.3",
       "System.Reactive.Windows.Forms >= 6.0.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\gimya\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\ammar\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Gamal\\level Four\\pl3\\project\\StoreManagement\\StoreManagement\\StoreManagement.fsproj",
+      "projectUniqueName": "F:\\Helwan_university\\StoreManagement\\StoreManagement.fsproj",
       "projectName": "StoreManagement",
-      "projectPath": "D:\\Gamal\\level Four\\pl3\\project\\StoreManagement\\StoreManagement\\StoreManagement.fsproj",
-      "packagesPath": "C:\\Users\\gimya\\.nuget\\packages\\",
-      "outputPath": "D:\\Gamal\\level Four\\pl3\\project\\StoreManagement\\StoreManagement\\obj\\",
+      "projectPath": "F:\\Helwan_university\\StoreManagement\\StoreManagement.fsproj",
+      "packagesPath": "C:\\Users\\ammar\\.nuget\\packages\\",
+      "outputPath": "F:\\Helwan_university\\StoreManagement\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\gimya\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\ammar\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0-windows"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\sdk\\9.0.101\\FSharp\\library-packs": {},
+        "C:\\Program Files\\dotnet\\sdk\\8.0.204\\FSharp\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -318,8 +311,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+      }
     },
     "frameworks": {
       "net8.0-windows7.0": {
@@ -328,7 +320,7 @@
           "FSharp.Core": {
             "include": "Runtime, Compile, Build, Native, Analyzers, BuildTransitive",
             "target": "Package",
-            "version": "[9.0.100, )",
+            "version": "[8.0.200, )",
             "generatePathProperty": true
           },
           "Newtonsoft.Json": {
@@ -361,7 +353,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
