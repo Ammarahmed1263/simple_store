@@ -1,0 +1,228 @@
+﻿open System
+open System.Windows.Forms
+open Store.Domain
+open Store.ProductData
+open Store.CartData
+open Store.Business
+open Store.UI.UIHelpers
+
+[<EntryPoint>]
+let main _ =
+    let products: Product list = ProductData.loadProducts ()
+    let cart: Cart = CartData.loadCart ()
+    // load cart on app start
+    let form: Form =
+        new Form(Text = "Store Simulator", WindowState = FormWindowState.Maximized)
+
+    let table: TableLayoutPanel =
+        new TableLayoutPanel(Dock = DockStyle.Fill, ColumnCount = 2)
+
+    table.RowCount <- 4
+    table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70.0f)) |> ignore
+    table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30.0f)) |> ignore
+
+    let applyButtonStyle (button: Button) =
+        button.Font <- new Drawing.Font("Arial Rounded MT", 10.0f)
+        button.FlatStyle <- FlatStyle.Flat
+        button.FlatAppearance.BorderSize <- 0
+        button.FlatAppearance.MouseOverBackColor <- Drawing.Color.LightGray
+        button.FlatAppearance.MouseDownBackColor <- Drawing.Color.SkyBlue
+
+    // UI elements with color improvements
+    let nameLabel =
+        new Label(
+            Text = "Enter Product Name",
+            AutoSize = false,
+            Font = new Drawing.Font("Arial Rounded MT Bold", 18.0f),
+            Dock = DockStyle.Fill,
+            TextAlign = Drawing.ContentAlignment.MiddleCenter
+        )
+    nameLabel.ForeColor <- Drawing.Color.Black // Changed color
+
+    let productNameTextBox = new TextBox(Dock = DockStyle.Fill, Font = new Drawing.Font("Arial Rounded MT", 12.0f))
+    productNameTextBox.BackColor <- Drawing.Color.LightGray // Changed background color
+
+    let addToCartButton = new Button(Text = "Add to Cart", Dock = DockStyle.Fill)
+    addToCartButton.BackColor <- Drawing.Color.LightGreen // Changed background color
+    addToCartButton.ForeColor <- Drawing.Color.Black // Changed text color
+    applyButtonStyle addToCartButton
+
+    let removeFromCartButton =
+        new Button(Text = "Remove from Cart", Dock = DockStyle.Fill)
+
+    removeFromCartButton.BackColor <- Drawing.Color.IndianRed // Changed background color
+    removeFromCartButton.ForeColor <- Drawing.Color.White // Changed text color
+    applyButtonStyle removeFromCartButton
+
+    let storeCatalog = new ListBox(Dock = DockStyle.Fill)
+    storeCatalog.BackColor <- Drawing.Color.WhiteSmoke // Changed background color
+    storeCatalog.Font <- new Drawing.Font("Arial Rounded MT", 12.0f)
+
+    let cartLabel =
+        new Label(
+            Text = "Your Cart",
+            AutoSize = false,
+            Font = new Drawing.Font("Arial Rounded MT Bold", 18.0f),
+            Dock = DockStyle.Fill,
+            TextAlign = Drawing.ContentAlignment.MiddleCenter
+        )
+
+    let cartListBox = new ListBox(Dock = DockStyle.Fill)
+    cartListBox.BackColor <- Drawing.Color.WhiteSmoke
+    cartListBox.Font <- new Drawing.Font("Arial Rounded MT", 12.0f)
+
+    let checkoutButton = new Button(Text = "Checkout", Dock = DockStyle.Fill)
+    checkoutButton.BackColor <- Drawing.Color.RoyalBlue // Changed background color
+    checkoutButton.ForeColor <- Drawing.Color.White // Changed text color
+    applyButtonStyle checkoutButton
+
+    let cartTotalLabel =
+        new Label(Dock = DockStyle.Bottom, Font = new Drawing.Font("Arial Rounded MT Bold", 14.0f), Visible = false)
+
+    // Populate store catalog
+    products
+    |> List.iter (fun product ->
+        storeCatalog.Items.Add(sprintf "%s - $%.2f" product.Name product.Price)
+        |> ignore)
+
+    cart.Items
+    |> List.iter (fun item -> cartListBox.Items.Add(sprintf "%s - $%.2f" item.Name item.Price) |> ignore)
+
+
+    // Button handlers with validation (no changes)
+    addToCartButton.Click.Add(fun _ ->
+        let productName = productNameTextBox.Text.Trim().ToLower()
+        let cart = CartData.loadCart ()
+
+        if productName <> "" then
+            match products |> List.tryFind (fun p -> p.Name.ToLower() = productName) with
+            | Some p ->
+                if
+                    cart.Items
+                    |> List.tryFind (fun p -> p.Name.ToLower() = productName)
+                    |> Option.isSome
+                then
+                    MessageBox.Show(
+                        $"'{productName}' is already in the cart.",
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    )
+                    |> ignore
+                else
+                    let updatedCart = CartManager.addToCart cart p
+                    CartData.saveCart updatedCart
+
+                    updateCartListBox cartListBox updatedCart.Items
+
+                    MessageBox.Show(
+                        $"'{productName}' added to cart.",
+                        "Info",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    )
+                    |> ignore
+            | None ->
+                MessageBox.Show(
+                    $"Product '{productName}' not found.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                )
+                |> ignore
+        else
+            MessageBox.Show("Please enter a product name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            |> ignore)
+
+
+    removeFromCartButton.Click.Add(fun _ ->
+        let productName = productNameTextBox.Text.Trim().ToLower()
+        let cart = CartData.loadCart ()
+
+        if productName <> "" then
+            match products |> List.tryFind (fun p -> p.Name.ToLower() = productName) with
+            | Some p ->
+                if
+                    cart.Items
+                    |> List.tryFind (fun p -> p.Name.ToLower() = productName)
+                    |> Option.isSome
+                then
+
+                    let updatedCart = CartManager.removeFromCart cart p
+                    CartData.saveCart updatedCart
+
+                    updateCartListBox cartListBox updatedCart.Items
+
+                    MessageBox.Show(
+                        $"'{productName}' removed from cart.",
+                        "Info",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    )
+                    |> ignore
+                else
+                    MessageBox.Show(
+                        $"'{productName}' is not in the cart.",
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    )
+                    |> ignore
+            | None ->
+                MessageBox.Show(
+                    $"Product '{productName}' not found.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                )
+                |> ignore
+        else
+            MessageBox.Show("Please enter a product name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            |> ignore)
+
+
+    checkoutButton.Click.Add(fun _ ->
+        let cart = CartData.loadCart ()
+
+        if cart.Total <= 0.0M then
+            MessageBox.Show(
+                "Your cart is empty. Add products before checkout.",
+                "Error",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning
+            )
+            |> ignore
+        else
+            cartTotalLabel.Text <- sprintf "Total: $%.2f" cart.Total
+            cartTotalLabel.Visible <- true
+
+            // Use a timer to hide the label after 10 seconds
+            let timer = new Timer(Interval = 5000) // 10 seconds in milliseconds
+
+            timer.Tick.Add(fun _ ->
+                cartTotalLabel.Visible <- false
+                timer.Stop()
+                timer.Dispose())
+
+            timer.Start())
+
+
+    // Subscribe to both list boxes' selection change events
+    storeCatalog.SelectedIndexChanged.Add(fun _ -> updateProductNameTextBox storeCatalog cartListBox productNameTextBox)
+    cartListBox.SelectedIndexChanged.Add(fun _ -> updateProductNameTextBox cartListBox storeCatalog productNameTextBox)
+
+    // Layout
+    table.Controls.Add(nameLabel, 0, 0)
+    table.Controls.Add(productNameTextBox, 0, 1)
+    table.Controls.Add(addToCartButton, 0, 2)
+    table.Controls.Add(removeFromCartButton, 0, 3)
+    table.Controls.Add(storeCatalog, 0, 4)
+    table.Controls.Add(cartLabel, 1, 0)
+    table.Controls.Add(checkoutButton, 1, 1)
+    table.SetRowSpan(checkoutButton, 2)
+    table.Controls.Add(cartListBox, 1, 4)
+    table.Controls.Add(cartTotalLabel, 1, 3)
+    form.Controls.Add(table)
+
+    Application.Run(form)
+    0
