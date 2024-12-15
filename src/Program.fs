@@ -17,199 +17,101 @@ let main _ =
 
     let table: TableLayoutPanel = new TableLayoutPanel(Dock = DockStyle.Fill, ColumnCount = 2)
     table.RowCount <- 4
-    table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60.0f)) |> ignore
+
+    table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70.0f)) |> ignore
     table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30.0f)) |> ignore
 
-    // Reusable function to style buttons
-    let styleButton (button: Button) (backColor: Drawing.Color) (textColor: Drawing.Color) =
-        button.BackColor <- backColor
-        button.ForeColor <- textColor
-        button.Font <- new Drawing.Font("Arial", 13.0f, Drawing.FontStyle.Bold)
-        button.FlatStyle <- FlatStyle.Flat
-        button.FlatAppearance.BorderColor <- Drawing.Color.LightGray
-        button.FlatAppearance.BorderSize <- 3
-        button.Height <- 50 // Increase button height
-
-    // Reusable function to style labels
-    let styleLabel (label: Label) =
-        label.Font <- new Drawing.Font("Arial", 11.0f, Drawing.FontStyle.Regular)
-        label.AutoSize <- true
-
-    // Reusable function to style list boxes
-    let styleListBox (listBox: ListBox) =
-        listBox.Font <- new Drawing.Font("Arial", 11.0f)
-        listBox.BackColor <- Drawing.Color.WhiteSmoke
-
-    // UI elements
-    let nameLabel =
-        new Label(Text = "Enter Product Name")
-    styleLabel nameLabel
-    nameLabel.ForeColor <- Drawing.Color.DarkSlateGray
-
-    let productNameTextBox = new TextBox(Dock = DockStyle.Fill)
-    productNameTextBox.BackColor <- Drawing.Color.LightGray
-    productNameTextBox.Font <- new Drawing.Font("Arial", 11.0f)
-
+    // UI elements with color improvements
+    let nameLabel = new Label(Text = "Enter Product Name", AutoSize = true, Font = new Drawing.Font("Arial", 20.0f))
+    nameLabel.ForeColor <- System.Drawing.Color.DarkSlateGray  // Changed color
+    let nameTextBox = new TextBox(Dock = DockStyle.Fill)
+    nameTextBox.BackColor <- System.Drawing.Color.LightGray  // Changed background color
     let addToCartButton = new Button(Text = "Add to Cart", Dock = DockStyle.Fill)
-    styleButton addToCartButton Drawing.Color.DarkGreen Drawing.Color.White
-
-    let removeFromCartButton =
-        new Button(Text = "Remove from Cart", Dock = DockStyle.Fill)
-    styleButton removeFromCartButton Drawing.Color.Red Drawing.Color.White
-
+    addToCartButton.BackColor <- System.Drawing.Color.LightGreen  // Changed background color
+    addToCartButton.ForeColor <- System.Drawing.Color.White  // Changed text color
+    let removeFromCartButton = new Button(Text = "Remove from Cart", Dock = DockStyle.Fill)
+    removeFromCartButton.BackColor <- System.Drawing.Color.IndianRed  // Changed background color
+    removeFromCartButton.ForeColor <- System.Drawing.Color.White  // Changed text color
     let storeCatalog = new ListBox(Dock = DockStyle.Fill)
-    styleListBox storeCatalog
-
+    storeCatalog.BackColor <- System.Drawing.Color.WhiteSmoke  // Changed background color
     let cartListBox = new ListBox(Dock = DockStyle.Fill)
-    styleListBox cartListBox
-
+    cartListBox.BackColor <- System.Drawing.Color.WhiteSmoke  // Changed background color
     let checkoutButton = new Button(Text = "Checkout", Dock = DockStyle.Fill)
-    styleButton checkoutButton Drawing.Color.DodgerBlue Drawing.Color.White
-
-    let cartTotalLabel =
-        new Label(Dock = DockStyle.Bottom, Visible = false)
-    styleLabel cartTotalLabel
+    checkoutButton.BackColor <- System.Drawing.Color.DodgerBlue  // Changed background color
+    checkoutButton.ForeColor <- System.Drawing.Color.White  // Changed text color
+    let cartTotalLabel = new Label(Text = sprintf "Total: $%.2f" total, Dock = DockStyle.Bottom, Font = new Drawing.Font("Arial", 14.0f))
 
     // Populate store catalog
-    products
-    |> List.iter (fun product ->
-        storeCatalog.Items.Add(sprintf "%s - $%.2f" product.Name product.Price)
-        |> ignore)
+    products |> List.iter (fun product -> 
+        storeCatalog.Items.Add(sprintf "%s ($%.2f)" product.Name product.Price) |> ignore)
 
-    cart.Items
-    |> List.iter (fun item -> cartListBox.Items.Add(sprintf "%s - $%.2f" item.Name item.Price) |> ignore)
+    // Update cart and total
+    let updateUI () =
+        cartListBox.Items.Clear()
+        products
+        |> List.filter (fun p -> p.IsInCart)
+        |> List.iter (fun p -> cartListBox.Items.Add(sprintf "%s - $%.2f" p.Name p.Price) |> ignore)
+        cartTotalLabel.Text <- sprintf "Total: $%.2f" total
 
-    // Button handlers
+    // Initial update
+    updateUI() // Update UI immediately after loading products and total
+
+    // Button handlers with validation (no changes)
     addToCartButton.Click.Add(fun _ ->
-        let productName = productNameTextBox.Text.Trim().ToLower()
-        let cart = CartData.loadCart ()
-
-        if productName <> "" then
-            match products |> List.tryFind (fun p -> p.Name.ToLower() = productName) with
-            | Some p ->
-                if
-                    cart.Items
-                    |> List.tryFind (fun p -> p.Name.ToLower() = productName)
-                    |> Option.isSome
-                then
-                    MessageBox.Show(
-                        $"'{productName}' is already in the cart.",
-                        "Error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    )
-                    |> ignore
-                else
-                    let updatedCart = CartManager.addToCart cart p
-                    CartData.saveCart updatedCart
-
-                    updateCartListBox cartListBox updatedCart.Items
-
-                    MessageBox.Show(
-                        $"'{productName}' added to cart.",
-                        "Info",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information
-                    )
-                    |> ignore
-            | None ->
-                MessageBox.Show(
-                    $"Product '{productName}' not found.",
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                )
-                |> ignore
+        let name = nameTextBox.Text.Trim().ToLower() // Convert input to lowercase
+        if name <> "" then
+            let product = products |> List.tryFind (fun p -> p.Name.ToLower() = name) // Convert product names to lowercase for comparison
+            match product with
+            | Some p when not p.IsInCart -> 
+                // Only add the product if it is not already in the cart
+                products <- ProductManager.addToCart products name
+                total <- ProductManager.calculateTotal products
+                ProductData.saveProducts products
+                ProductData.saveTotal total
+                MessageBox.Show($"'{name}' added to cart.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information) |> ignore
+                updateUI()
+            | Some _ -> 
+                MessageBox.Show($"'{name}' is already in the cart.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error) |> ignore
+            | None -> 
+                MessageBox.Show($"Product '{name}' not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error) |> ignore
         else
-            MessageBox.Show("Please enter a product name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            |> ignore)
+            MessageBox.Show("Please enter a product name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error) |> ignore)
 
     removeFromCartButton.Click.Add(fun _ ->
-        let productName = productNameTextBox.Text.Trim().ToLower()
-        let cart = CartData.loadCart ()
-
-        if productName <> "" then
-            match products |> List.tryFind (fun p -> p.Name.ToLower() = productName) with
-            | Some p ->
-                if
-                    cart.Items
-                    |> List.tryFind (fun p -> p.Name.ToLower() = productName)
-                    |> Option.isSome
-                then
-
-                    let updatedCart = CartManager.removeFromCart cart p
-                    CartData.saveCart updatedCart
-
-                    updateCartListBox cartListBox updatedCart.Items
-
-                    MessageBox.Show(
-                        $"'{productName}' removed from cart.",
-                        "Info",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information
-                    )
-                    |> ignore
-                else
-                    MessageBox.Show(
-                        $"'{productName}' is not in the cart.",
-                        "Error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    )
-                    |> ignore
-            | None ->
-                MessageBox.Show(
-                    $"Product '{productName}' not found.",
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                )
-                |> ignore
+        let name = nameTextBox.Text.Trim().ToLower() // Convert input to lowercase
+        if name <> "" then
+            let product = products |> List.tryFind (fun p -> p.Name.ToLower() = name) // Convert product names to lowercase for comparison
+            match product with
+            | Some p when p.IsInCart -> 
+                // Only remove the product if it is in the cart
+                products <- ProductManager.removeFromCart products name
+                total <- ProductManager.calculateTotal products
+                ProductData.saveProducts products
+                ProductData.saveTotal total
+                MessageBox.Show($"'{name}' removed from cart.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information) |> ignore
+                updateUI()
+            | Some _ -> 
+                MessageBox.Show($"'{name}' is not in the cart.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error) |> ignore
+            | None -> 
+                MessageBox.Show($"Product '{name}' not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error) |> ignore
         else
-            MessageBox.Show("Please enter a product name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            |> ignore)
+            MessageBox.Show("Please enter a product name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error) |> ignore)
 
     checkoutButton.Click.Add(fun _ ->
-        let cart = CartData.loadCart ()
-        
-        if cart.Total <= 0.0M then
-            MessageBox.Show(
-                "Your cart is empty. Add products before checkout.", 
-                "Error", 
-                MessageBoxButtons.OK, 
-                MessageBoxIcon.Warning
-            ) |> ignore
+        if total > 0.0M then
+            MessageBox.Show(sprintf "Total: $%.2f" total, "Checkout", MessageBoxButtons.OK, MessageBoxIcon.Information) |> ignore
         else
-            cartTotalLabel.Text <- sprintf "Total: $%.2f" cart.Total
-            cartTotalLabel.Visible <- true
-
-            // Use a timer to hide the label after 10 seconds
-            let timer = new Timer(Interval = 5000) // 10 seconds in milliseconds
-            timer.Tick.Add(fun _ ->
-                cartTotalLabel.Visible <- false
-                timer.Stop()
-                timer.Dispose()
-            )
-            timer.Start()
-    )
-
-    // Subscribe to both list boxes' selection change events
-    storeCatalog.SelectedIndexChanged.Add(fun _ -> updateProductNameTextBox storeCatalog cartListBox productNameTextBox)
-    cartListBox.SelectedIndexChanged.Add(fun _ -> updateProductNameTextBox cartListBox storeCatalog productNameTextBox)
+            MessageBox.Show("Your cart is empty. Add products before checkout.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning) |> ignore)
 
     // Layout
     table.Controls.Add(nameLabel, 0, 0)
-    table.Controls.Add(productNameTextBox, 0, 1)
+    table.Controls.Add(nameTextBox, 0, 1)
     table.Controls.Add(addToCartButton, 0, 2)
     table.Controls.Add(removeFromCartButton, 0, 3)
     table.Controls.Add(storeCatalog, 0, 4)
-    table.Controls.Add(checkoutButton, 1, 1)
-    table.SetRowSpan(checkoutButton, 2)
-    table.Controls.Add(cartListBox, 1, 4)
+    table.Controls.Add(cartListBox, 1, 0)
+    table.Controls.Add(checkoutButton, 1, 2)
     table.Controls.Add(cartTotalLabel, 1, 3)
-
-    table.CellBorderStyle <- TableLayoutPanelCellBorderStyle.Single // Add border to enhance table appearance
-    table.BackColor <- Drawing.Color.AliceBlue // Light background color for the table
 
     form.Controls.Add(table)
 
