@@ -10,12 +10,13 @@ open Store.UI.UIHelpers
 let main _ =
     let products: Product list = ProductData.loadProducts ()
     let cart: Cart = CartData.loadCart ()
-    // load cart on app start
+
     let form: Form =
         new Form(Text = "Store Simulator", WindowState = FormWindowState.Maximized)
 
     let table: TableLayoutPanel =
         new TableLayoutPanel(Dock = DockStyle.Fill, ColumnCount = 2)
+
 
     table.RowCount <- 4
     table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70.0f)) |> ignore
@@ -28,7 +29,6 @@ let main _ =
         button.FlatAppearance.MouseOverBackColor <- Drawing.Color.LightGray
         button.FlatAppearance.MouseDownBackColor <- Drawing.Color.SkyBlue
 
-    // UI elements with color improvements
     let nameLabel =
         new Label(
             Text = "Enter Product Name",
@@ -89,7 +89,6 @@ let main _ =
     |> List.iter (fun item -> cartListBox.Items.Add(sprintf "%s - $%.2f" item.Name item.Price) |> ignore)
 
 
-    // Button handlers with validation (no changes)
     addToCartButton.Click.Add(fun _ ->
         let productName = productNameTextBox.Text.Trim().ToLower()
         let cart = CartData.loadCart ()
@@ -181,30 +180,30 @@ let main _ =
             |> ignore)
 
 
-    checkoutButton.Click.Add(fun _ ->
-        let cart = CartData.loadCart ()
+    // checkoutButton.Click.Add(fun _ ->
+    //     let cart = CartData.loadCart ()
 
-        if cart.Total <= 0.0M then
-            MessageBox.Show(
-                "Your cart is empty. Add products before checkout.",
-                "Error",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Warning
-            )
-            |> ignore
-        else
-            cartTotalLabel.Text <- sprintf "Total: $%.2f" cart.Total
-            cartTotalLabel.Visible <- true
+    //     if cart.Total <= 0.0M then
+    //         MessageBox.Show(
+    //             "Your cart is empty. Add products before checkout.",
+    //             "Error",
+    //             MessageBoxButtons.OK,
+    //             MessageBoxIcon.Warning
+    //         )
+    //         |> ignore
+    //     else
+    //         cartTotalLabel.Text <- sprintf "Total: $%.2f" cart.Total
+    //         cartTotalLabel.Visible <- true
 
-            // Use a timer to hide the label after 10 seconds
-            let timer = new Timer(Interval = 5000) // 10 seconds in milliseconds
+    //         // Use a timer to hide the label after 10 seconds
+    //         let timer = new Timer(Interval = 5000) // 10 seconds in milliseconds
 
-            timer.Tick.Add(fun _ ->
-                cartTotalLabel.Visible <- false
-                timer.Stop()
-                timer.Dispose())
+    //         timer.Tick.Add(fun _ ->
+    //             cartTotalLabel.Visible <- false
+    //             timer.Stop()
+    //             timer.Dispose())
 
-            timer.Start())
+    //         timer.Start())
 
 
     // Subscribe to both list boxes' selection change events
@@ -212,16 +211,51 @@ let main _ =
     cartListBox.SelectedIndexChanged.Add(fun _ -> updateProductNameTextBox cartListBox storeCatalog productNameTextBox)
 
     // Layout
+    // table.Controls.Add(nameLabel, 0, 0)
+    // table.Controls.Add(productNameTextBox, 0, 1)
+    // table.Controls.Add(addToCartButton, 0, 2)
+    // table.Controls.Add(removeFromCartButton, 0, 3)
+    // table.Controls.Add(storeCatalog, 0, 4)
+    // table.Controls.Add(cartLabel, 1, 0)
+    // table.Controls.Add(checkoutButton, 1, 1)
+    // table.SetRowSpan(checkoutButton, 2)
+    // table.Controls.Add(cartListBox, 1, 4)
+    // table.Controls.Add(cartTotalLabel, 1, 3)
+
+    checkoutButton.Click.Add(fun _ ->
+            let cart = CartData.loadCart ()
+
+            if cart.Total <= 0.0M then
+                MessageBox.Show(
+                    "Your cart is empty. Add products before checkout.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                )
+                |> ignore
+            else
+                cartTotalLabel.Text <- sprintf "Total: $%.2f" cart.Total
+                cartTotalLabel.Visible <- true
+
+                // Use a timer to hide the label after 10 seconds
+                let timer = new Timer(Interval = 5000) // 10 seconds in milliseconds
+
+                timer.Tick.Add(fun _ ->
+                    cartTotalLabel.Visible <- false
+                    timer.Stop()
+                    timer.Dispose())
+
+                timer.Start())
+    // Layout
     table.Controls.Add(nameLabel, 0, 0)
     table.Controls.Add(productNameTextBox, 0, 1)
     table.Controls.Add(addToCartButton, 0, 2)
     table.Controls.Add(removeFromCartButton, 0, 3)
     table.Controls.Add(storeCatalog, 0, 4)
-    table.Controls.Add(cartLabel, 1, 0)
-    table.Controls.Add(checkoutButton, 1, 1)
-    table.SetRowSpan(checkoutButton, 2)
-    table.Controls.Add(cartListBox, 1, 4)
+    table.Controls.Add(cartListBox, 1, 0)
+    table.Controls.Add(checkoutButton, 1, 2)
     table.Controls.Add(cartTotalLabel, 1, 3)
+
     form.Controls.Add(table)
 
     Application.Run(form)
