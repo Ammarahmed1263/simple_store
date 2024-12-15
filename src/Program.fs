@@ -1,20 +1,21 @@
 ﻿open System
 open System.Windows.Forms
 open Store.Domain
-open Store.Data
+open Store.ProductData
 open Store.CartData
-
 open Store.Business
 open Store.UI.UIHelpers
 
 [<EntryPoint>]
 let main _ =
-    let mutable products = ProductData.loadProducts ()
-    let mutable total = ProductData.loadTotal ()
+    let products: Product list = ProductData.loadProducts ()
+    let cart: Cart = CartData.loadCart ()
 
-    let form = new Form(Text = "Store Simulator", WindowState = FormWindowState.Maximized)
+    // Load cart on app start
+    let form: Form =
+        new Form(Text = "Store Simulator", WindowState = FormWindowState.Maximized)
 
-    let table = new TableLayoutPanel(Dock = DockStyle.Fill, ColumnCount = 2)
+    let table: TableLayoutPanel = new TableLayoutPanel(Dock = DockStyle.Fill, ColumnCount = 2)
     table.RowCount <- 4
     table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70.0f)) |> ignore
     table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30.0f)) |> ignore
@@ -37,6 +38,7 @@ let main _ =
     let checkoutButton = new Button(Text = "Checkout", Dock = DockStyle.Fill)
     checkoutButton.BackColor <- System.Drawing.Color.DodgerBlue  // Changed background color
     checkoutButton.ForeColor <- System.Drawing.Color.White  // Changed text color
+
     let cartTotalLabel =
         new Label(Dock = DockStyle.Bottom, Font = new Drawing.Font("Arial Rounded MT Bold", 14.0f), Visible = false)
 
@@ -129,6 +131,7 @@ let main _ =
     table.Controls.Add(cartListBox, 1, 0)
     table.Controls.Add(checkoutButton, 1, 2)
     table.Controls.Add(cartTotalLabel, 1, 3)
+
     form.Controls.Add(table)
 
     Application.Run(form)
