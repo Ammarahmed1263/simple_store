@@ -17,7 +17,6 @@ let main _ =
 
     let table: TableLayoutPanel = new TableLayoutPanel(Dock = DockStyle.Fill, ColumnCount = 2)
     table.RowCount <- 4
-
     table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70.0f)) |> ignore
     table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30.0f)) |> ignore
 
@@ -39,7 +38,9 @@ let main _ =
     let checkoutButton = new Button(Text = "Checkout", Dock = DockStyle.Fill)
     checkoutButton.BackColor <- System.Drawing.Color.DodgerBlue  // Changed background color
     checkoutButton.ForeColor <- System.Drawing.Color.White  // Changed text color
-    let cartTotalLabel = new Label(Text = sprintf "Total: $%.2f" total, Dock = DockStyle.Bottom, Font = new Drawing.Font("Arial", 14.0f))
+
+    let cartTotalLabel =
+        new Label(Dock = DockStyle.Bottom, Font = new Drawing.Font("Arial Rounded MT Bold", 14.0f), Visible = false)
 
     // Populate store catalog
     products |> List.iter (fun product -> 
@@ -98,11 +99,29 @@ let main _ =
             MessageBox.Show("Please enter a product name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error) |> ignore)
 
     checkoutButton.Click.Add(fun _ ->
-        if total > 0.0M then
-            MessageBox.Show(sprintf "Total: $%.2f" total, "Checkout", MessageBoxButtons.OK, MessageBoxIcon.Information) |> ignore
-        else
-            MessageBox.Show("Your cart is empty. Add products before checkout.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning) |> ignore)
+            let cart = CartData.loadCart ()
 
+            if cart.Total <= 0.0M then
+                MessageBox.Show(
+                    "Your cart is empty. Add products before checkout.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                )
+                |> ignore
+            else
+                cartTotalLabel.Text <- sprintf "Total: $%.2f" cart.Total
+                cartTotalLabel.Visible <- true
+
+                // Use a timer to hide the label after 10 seconds
+                let timer = new Timer(Interval = 5000) // 10 seconds in milliseconds
+
+                timer.Tick.Add(fun _ ->
+                    cartTotalLabel.Visible <- false
+                    timer.Stop()
+                    timer.Dispose())
+
+                timer.Start())
     // Layout
     table.Controls.Add(nameLabel, 0, 0)
     table.Controls.Add(nameTextBox, 0, 1)

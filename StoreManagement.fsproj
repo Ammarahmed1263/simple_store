@@ -9,6 +9,7 @@
   <ItemGroup>
     <Compile Include="src\Domain.fs" />
     <Compile Include="src\Data.fs" />
+    <Compile Include="src\CartData.fs" />
     <Compile Include="src\Business.fs" />
     <Compile Include="src\UIHelpers.fs" />
     <Compile Include="src\Program.fs" />
