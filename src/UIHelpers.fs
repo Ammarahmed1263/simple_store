@@ -21,8 +21,6 @@ module UIHelpers =
         button.ForeColor <- textColor
         button.Font <- new Drawing.Font("Arial", 13.0f, Drawing.FontStyle.Bold)
         button.FlatStyle <- FlatStyle.Flat
-        button.FlatAppearance.BorderColor <- Drawing.Color.LightGray
-        button.FlatAppearance.BorderSize <- 3
         button.Height <- 30
 
     let styleLabel (label: Label) =

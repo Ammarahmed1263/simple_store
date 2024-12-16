@@ -18,7 +18,7 @@ let main _ =
         new TableLayoutPanel(Dock = DockStyle.Fill, ColumnCount = 2)
 
 
-    table.RowCount <- 4
+    table.RowCount <- 5
     table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80.0f)) |> ignore
     table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20.0f)) |> ignore
 
@@ -48,7 +48,7 @@ let main _ =
     styleLabel cartLabel
 
     let checkoutButton = new Button(Text = "Checkout", Dock = DockStyle.Fill)
-    styleButton checkoutButton Drawing.Color.DodgerBlue Drawing.Color.White
+    styleButton checkoutButton Drawing.Color.RoyalBlue Drawing.Color.White
 
     let cartTotalLabel = new Label(Dock = DockStyle.Bottom, Visible = false)
     styleLabel cartTotalLabel
@@ -191,8 +191,8 @@ let main _ =
     table.Controls.Add(cartListBox, 1, 4)
     table.Controls.Add(cartTotalLabel, 1, 3)
 
-    table.CellBorderStyle <- TableLayoutPanelCellBorderStyle.Single // Add border to enhance table appearance
-    table.BackColor <- Drawing.Color.AliceBlue // Light background color for the table
+    table.CellBorderStyle <- TableLayoutPanelCellBorderStyle.Single
+    table.BackColor <- Drawing.Color.AliceBlue
 
     form.Controls.Add(table)
 
